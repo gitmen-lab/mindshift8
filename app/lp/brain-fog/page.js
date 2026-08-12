@@ -29,6 +29,10 @@ export default function BrainFogLandingPage() {
                 {CTA_LABEL}
               </Link>
             </div>
+            <p style={{ marginTop: 12, fontSize: ".78rem", color: "var(--hero-ink-soft)" }}>
+              Mind Shift 8 is an independent publisher. We may earn a commission from the product
+              featured in this video, at no extra cost to you.
+            </p>
             <a className="learn-more" href="#pain">
               &gt;&gt; See how the method works
             </a>
@@ -239,7 +243,7 @@ export default function BrainFogLandingPage() {
                   <path d="M3 10h18M8 3v4M16 3v4" />
                   <path d="M8 15l2.5 2.5L16 12" />
                 </svg>
-                <h3>Notice a difference in as little as 7 to 14 days</h3>
+                <h3>Many notice a difference within 7 to 14 days</h3>
                 <p>Many users report noticing initial changes within the first two weeks of consistent practice.</p>
               </div>
               <div className="uvp-card">
