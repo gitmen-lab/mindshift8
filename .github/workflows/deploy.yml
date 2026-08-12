@@ -24,6 +24,34 @@ jobs:
       - name: Build (static export)
         run: npm run build
 
+      - name: Verify export before deploying
+        run: |
+          required_files=(
+            "out/index.html"
+            "out/go.html"
+            "out/lp/brain-fog.html"
+            "out/blog/how-to-get-rid-of-brain-fog.html"
+            "out/blog/brain-fog-symptoms.html"
+            "out/blog/how-to-improve-focus-and-concentration.html"
+            "out/privacy-policy.html"
+            "out/terms-of-service.html"
+            "out/medical-disclaimer.html"
+            "out/contact-us.html"
+            "out/.htaccess"
+          )
+          missing=0
+          for f in "${required_files[@]}"; do
+            if [ ! -s "$f" ]; then
+              echo "::error::Missing or empty required file: $f"
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then
+            echo "Export is incomplete, refusing to deploy."
+            exit 1
+          fi
+          echo "All ${#required_files[@]} required pages present, proceeding to deploy."
+
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
